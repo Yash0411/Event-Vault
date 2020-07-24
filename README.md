@@ -1,4 +1,4 @@
-Link : [eventvaultpccoe.web.app](https://eventvaultpccoe.web.app/){:target="_blank"}
+Link : [eventvaultpccoe.web.app](https://eventvaultpccoe.web.app/)
 
 It has been made for event suggestion purposes.
 
