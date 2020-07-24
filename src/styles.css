@@ -1,0 +1,123 @@
+.maxheightcard {max-height: 650px; scrollbar-color: black grey;scrollbar-width: thin;}
+.maxheightdes {max-height: 260px; scrollbar-color: black grey;scrollbar-width: thin;}
+.maxheightcomment {max-height: 450px;border: 1px solid #e5e5e5;background-color:#efefef;}
+
+
+
+
+
+.text-muted {
+    color: #99a0ac !important
+}
+
+.block,
+.card {
+    background: #fff;
+    border-width: 0;
+    border-radius: .25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+    margin-bottom: 1.5rem
+}
+
+.avatar {
+    position: relative;
+    line-height: 1;
+    border-radius: 500px;
+    white-space: nowrap;
+    font-weight: 700;
+    border-radius: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    border-radius: 500px;
+    box-shadow: 0 5px 10px 0 rgba(50, 50, 50, .15)
+}
+
+.avatar img {
+    border-radius: inherit;
+    width: 100%
+}
+
+.gd-primary {
+    color: #fff;
+    border: none;
+    background: #448bff linear-gradient(45deg, #448bff, #44e9ff)
+}
+
+.gd-success {
+    color: #fff;
+    border: none;
+    background: #31c971 linear-gradient(45deg, #31c971, #3dc931)
+}
+
+.gd-info {
+    color: #fff;
+    border: none;
+    background: #14bae4 linear-gradient(45deg, #14bae4, #14e4a6)
+}
+
+.gd-warning {
+    color: #fff;
+    border: none;
+    background: #f4c414 linear-gradient(45deg, #f4c414, #f45414)
+}
+
+
+.list {
+    padding-left: 0;
+    padding-right: 0
+}
+
+.list-item {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.list-row .list-item {
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: .75rem .625rem
+}
+
+.list-row .list-item>* {
+    padding-left: .625rem;
+    padding-right: .625rem
+}
+
+.no-wrap {
+    white-space: nowrap
+}
+
+.text-color {
+    color: #5e676f
+}
+
+
+.w-25 {
+    width: 35px !important;
+    height: 35 !important
+}
+.w-35 {
+    width: 35px !important;
+    height: 35 !important
+}
+.w-30 {
+    width: 30px !important;
+    height: 30 !important;
+}
+a:link {
+    text-decoration: none
+}
+
+.scrollbar {scrollbar-color: black grey;scrollbar-width: thin;}

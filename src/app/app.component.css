@@ -1,0 +1,31 @@
+.logout{
+    right: 0;
+}
+.w-31{
+    width: 30px !important;
+    height: 30 !important
+}
+.nav-menu{
+    font-size: xx-small;
+}
+
+@media screen and (max-width: 400px) {
+    #intro ,#introCarousel{
+     padding-top: 15%;
+     height : 60%;
+     padding-bottom:0;
+    }
+    .carousel-control-prev,.carousel-control-next{
+        color:transparent;
+    }
+    .login{
+        font-size: xx-small;
+    }
+    .w-31{
+        width: 25px !important;
+    height: 25 !important
+    }
+    .nav-menu{
+        font-size: 7px;
+    }
+  }

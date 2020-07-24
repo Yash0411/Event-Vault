@@ -1,0 +1,190 @@
+<section id="about">
+  <div class="container">
+
+    <header class="section-header">
+      <h3>Suggested projects</h3>
+      <p>Your suggestions are always welcome. We are here to always accept your views and work together on them. </p>
+    </header>
+
+      <div class="row about-cols" style="margin-bottom: 50px;">
+
+      <div class="col-md-4 wow fadeInUp maxheightcard overflow-auto" *ngFor="let item of suggested | async let y=index" style="margin-bottom: 43px;" >
+
+
+
+
+        <div id="carousel{{y}}" class="carousel slide carousel-fade" data-interval="false" data-ride="carousel">
+          <div class="carousel-inner">
+
+            <div class="carousel-item active">
+
+              <div class="about-col">
+                <div class="img">
+                  <img src="../../assets/img/i{{(y+2)%5}}.jpg" class="img-fluid" width="100%" style="max-height:201px;">
+                  <div class="icon" *ngIf="item.type=='Technical'"><i class="ion-code-working"></i></div>
+                  <div class="icon" *ngIf="item.type=='Semi-Technical'"><i class="ion-ios-book"></i></div>
+                  <div class="icon" *ngIf="item.type=='Non-Technical'"><i class="ion-university"></i></div>
+                  <div class="icon" *ngIf="item.type=='Cultural'"><i class="ion-ios-body"></i></div>
+                  <div class="icon" *ngIf="item.type=='Gaming'"><i class="ion-ios-game-controller-b"></i></div>
+                  <div class="icon" *ngIf="item.type=='Workshop'"><i class="ion-ios-photos"></i></div>
+                  <div class="icon" *ngIf="item.type=='Sports'"><i class="ion-ios-football"></i></div>
+                  <div class="icon" *ngIf="item.type=='Photography'"><i class="ion-ios-camera"></i></div>
+                </div>
+                <h2 class="title"><a href="#">{{item.Name}}</a></h2>
+                <p class="maxheightdes overflow-auto scrollbar">{{item.description}}   
+                  <br/>
+                 <b class="row"><span> Posted By : {{item.username}}    </span><img  [src]="item.photo" class="w-30 avatar" style="margin-left:4px" ></b>      
+                </p>
+                <b class="pull-right" style="margin-right: 10px;">TYPE:{{item.type}}</b>
+                <br/>
+     
+                <div [(ngModel)]="guest" *ngIf="auth.user$ | async; then authenticated else guest">
+                  <!-- template will replace this div -->
+                </div>
+             
+                <ng-template #authenticated>
+                  <div *ngIf="auth.user$ | async as user">
+                    <div (click)="callup(item,user.uid)" class="fa fa-thumbs-o-up" style="margin-left: 8px;margin-right: 5px; color:blue; font-size: 28px;">
+                    </div>  {{item.upvote.upvote}}
+                    <div (click)="calldown(item,user.uid)" class="fa fa-thumbs-o-down" style="margin-left: 8px;margin-right: 5px; color:red; font-size: 28px;">
+                    </div> {{item.upvote.downvote}}
+                    
+                    <br/>
+                    <div class="text-right">
+                      <a class="btn btn-outline-success btn-rounded waves-effect" href="#carousel{{y}}" role="button" data-slide="next">
+                        Comment / View Comments
+                        <span class="" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                     </div>
+
+                    
+                    <div *ngIf="auth.canDelete(user)">
+                      <br/>
+                      <button class="btn btn-danger btn-circle pull-right"  (click)="deletePost(item.Name)">
+                      Delete Post
+                      </button>
+                      <br/>
+                      <button class="btn btn-outline-warning btn-circle pull-left"  (click)="movePost(item)">
+                        Move to Ongiong
+                        </button>
+                        <br/>
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+
+
+            </div>
+
+            <div class="carousel-item">
+
+              <div *ngIf="auth.user$ | async as user">
+                    <br/>
+
+                    <div class="input-group mb-3">
+                      <textarea rows="1" class="form-control border border-secondary" placeholder="Enter your comments" [(ngModel)]="comment[y]">
+                      </textarea>
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-warning btn-circle" (click)="addcomment(item,user.displayName,user.photoURL,y)"><img src="https://cdn0.iconfinder.com/data/icons/zake-miscellaneous-005/64/send_share_forward-512.png" class="btn-outline-warning" height="30px" width="30px"></button> 
+                      </div>
+                    </div>
+
+
+                  <div class="maxheightcomment overflow-auto " style="scrollbar-color: black grey;scrollbar-width: thin;"> 
+                    <ul class=" list-group" >
+                      <div class="list list-row block rounded" >
+                      
+                        <div *ngFor="let comment of item.comment">
+              
+              
+                          <li class="list-item rounded shadow-sm p-3" style="overflow-x: hidden;">
+                              <div><span class="w-35 avatar gd-warning"><img  [src]="comment.photo"></span></div>
+                              <div class="flex"> <div class="item-author text-color" style="font-size: x-small; " >{{comment.id}}</div>
+                                  <div class="item-except text-muted " style="font-size:medium ; " >{{comment.comm}}</div>
+                              </div>                        
+                          </li>
+                          
+                
+                      </div>
+
+                    </div>
+                  </ul>
+                    
+                  </div>
+              </div>
+              <br/>
+
+                    <div class="text-right">
+                      <a class="btn btn-outline-success btn-rounded waves-effect" href="#carousel{{y}}" role="button" data-slide="next">
+                        View Information
+                        <span class="" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                     </div>
+
+                    <br/>
+            </div>
+            
+          </div>
+          
+        </div>
+
+
+
+        
+      </div>
+      </div>
+  </div>
+
+
+<div *ngIf="auth.user$ | async; then authenticated else guest">
+<!-- template will replace this div -->
+</div>
+
+<ng-template #authenticated>
+<div *ngIf="auth.user$ | async as user">
+  <div class="container register">
+    
+    <div>
+      <img src="../../assets/img/header.jpg" width="100%" height="auto" style="border-radius: 5px;"> 
+    </div>
+<br/>
+    <div>
+
+      <form (ngSubmit)="onSubmit(user)">
+        <b><h2 style="font-family:'Times New Roman', Times, serif;">NEW ENTRY</h2></b>
+
+      <div class="col-md-5 mb-3">
+        <label for="validationServer01">Name you want to suggest:</label>
+        <input type="text" class="form-control" placeholder="Name" id="item" required [(ngModel)]="itemValue[0]" name="item0">
+       </div>
+
+      <div class="col-md-9 mb-3">
+        <label for="validationServer01">Describe</label>
+        <textarea class="form-control" placeholder="Description" id="item" required [(ngModel)]="itemValue[1]" name="item1">
+        </textarea>
+      </div>
+
+      <div class="col-md-6 mb-3">
+      <br/><input type="radio" required [(ngModel)]="itemValue[2]" name="item2" value="Technical">Technical
+      <br/><input type="radio" required [(ngModel)]="itemValue[2]" name="item2" value="Semi-Technical">Semi-Technical
+      <br/><input type="radio" required [(ngModel)]="itemValue[2]" name="item2" value="Non-Technical">Non-Technical
+      <br/><input type="radio" required [(ngModel)]="itemValue[2]" name="item2" value="Cultural">Cultural
+      <br/><input type="radio" required [(ngModel)]="itemValue[2]" name="item2" value="Gaming">Gaming
+      <br/><input type="radio" required [(ngModel)]="itemValue[2]" name="item2" value="Workshop">Workshop
+      <br/><input type="radio" required [(ngModel)]="itemValue[2]" name="item2" value="Sports">Sports
+      <br/><input type="radio" required [(ngModel)]="itemValue[2]" name="item2" value="Photography">Photography
+      
+      <!--<input ngModel (change)="picked($event)" type="file">-->
+      <br/><br/><button type="submit" (click)="onSubmit(user)" class="btnRegister">Submit</button>
+    </div>
+      
+    </form>
+  </div>
+
+  </div>
+</div>
+</ng-template>
+
+</section>

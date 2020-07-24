@@ -1,0 +1,195 @@
+  <!--==========================
+    Header
+  ============================-->
+  <header id="header">
+    <div class="container-fluid" style="display: flex;">
+
+      <div id="logo" class="pull-left" style="width: 90%;">
+        <h1><a href="#intro" class="scrollto">EVENT VAULT</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+      </div>
+
+      <div class="logout">
+          
+          
+
+            <div *ngIf="auth.user$ | async; then authenticated else guest">
+              <!-- template will replace this div -->
+          </div>
+            
+            <ng-template #guest>
+            <a (click)="auth.googleSignin()" class = "login" >SIGNIN/UP</a>
+              </ng-template>
+
+
+            <ng-template #authenticated>
+              <div *ngIf="auth.user$ | async as user">
+               <button (click)='auth.signOut()' class="btn btn-link nav-menu" style="color: white;"><li style="display:list-item;"><img [src]="user.photoURL" class="w-31 avatar" style="margin-left: 2px;"></li><br><li style="display:list-item;">LOGOUT</li></button>
+                
+              </div>
+            </ng-template>
+            
+
+
+          </div><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->
+  
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro">
+    <div class="intro-container">
+      <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+
+        <ol class="carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active">
+            <div class="carousel-background"><img src="assets/img/intro-carousel/1.jpg" alt=""></div>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2>COMPUTER dEPT. PCCOE</h2>
+                <p>Gain new suggestions for the new ideas for the events</p>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="carousel-background"><img src="assets/img/intro-carousel/2.jpg" alt=""></div>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2>Ongoing Projects</h2>
+                <p>The Projects that we are working with.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="carousel-background"><img src="assets/img/intro-carousel/3.jpg" alt=""></div>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2>Suggestions</h2>
+                <p>You guys can suggest various events or projects which will be taken into consideration for various events.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="carousel-background"><img src="assets/img/intro-carousel/4.jpg" alt=""></div>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2>Completed Projects</h2>
+                <p>The Success of we all PCCOEieans.</p>
+              </div>
+            </div>
+          </div>
+
+         </div>
+
+        <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+    </div>
+  </section><!-- #intro -->
+
+  <!--==========================
+      Featured Services Section
+    ============================-->
+    <section id="featured-services">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 box">
+            <i class="ion-ios-bookmarks-outline"></i>
+            <h4 class="title"><a  routerLink="/current">Just WoRkinG ON thEm</a></h4>
+            <p class="description">Thanks for suggesting such good ideas so that they are urrently worked with.</p>
+          </div>
+
+          <div class="col-lg-4 box box-bg">
+            <i class="ion-ios-stopwatch-outline"></i>
+            <h4 class="title"><a  routerLink="/suggested">SuGGesTion BoX</a></h4>
+            <p class="description">Post your ideas here. Will be definitely worked on.</p>
+          </div>
+
+          <div class="col-lg-4 box">
+            <i class="ion-ios-heart-outline"></i>
+            <h4 class="title"><a routerLink="/completed">tHe SucCEss</a></h4>
+            <p class="description">The completed projects or we can say <br>'The Achievement'.</p>
+          </div>
+
+        </div>
+      </div>
+    </section><!-- #featured-services -->
+    
+    
+    <router-outlet></router-outlet>
+
+     <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-3 footer-info">
+            <h3>PCCOE EVENT VAULT</h3>
+            </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="www.pccoepune.com">PCCOE</a></li>
+              <!--<li><i class="ion-ios-arrow-right"></i> <a href="#">COMP</a></li>-->
+              <li><i class="ion-ios-arrow-right"></i><a  routerLink="/developers">The Developer</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Move To</h4>
+            <ul>
+              <li><i class="ion-ios-arrow-right"></i><a  routerLink="/current">Current Projects</a></li>
+              <li><i class="ion-ios-arrow-right"></i><a  routerLink="/suggested">Suggest !</a></li>
+              <li><i class="ion-ios-arrow-right"></i><a  routerLink="/completed">The Achivement</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <!--<h4>Contact Us</h4>
+            <p>
+              PLot No 12 PrakashGad PCCOE <br>
+              <strong>Phone:</strong> +91 <br>
+              <strong>Email:</strong> ynm0411@gmail.com<br>
+            </p>-->
+
+            <!--<div class="social-links">
+              <a href="" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="https://www.facebook.com/people/Yash-Morankar/100009218914406" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="https://www.instagram.com/yashmorankar/" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a mailto="ynm0411@gmail.com" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>-->
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </footer><!-- #footer -->
+    
+    

@@ -1,0 +1,57 @@
+<section id="about">
+    <div class="container">
+
+      <header class="section-header">
+        <h3>Completed projects</h3>
+        <p>The achivements of the department are the events successfully planned and conducted.</p>
+      </header>
+
+      <div class="row about-cols">
+
+        <div class="col-md-4 wow fadeInUp maxheightcard overflow-auto" *ngFor="let item of completed | async let y=index" style="margin-bottom: 43px;" >
+          <div class="about-col">
+            <div class="img">
+              <img src="../../assets/img/i{{(y+3)%5}}.jpg" class="img-fluid" width="100%" style="max-height:201px;">
+                   <div class="icon" *ngIf="item.type=='Technical'"><i class="ion-code-working"></i></div>
+                    <div class="icon" *ngIf="item.type=='Semi-Technical'"><i class="ion-ios-book"></i></div>
+                    <div class="icon" *ngIf="item.type=='Non-Technical'"><i class="ion-university"></i></div>
+                    <div class="icon" *ngIf="item.type=='Cultural'"><i class="ion-ios-body"></i></div>
+                    <div class="icon" *ngIf="item.type=='Gaming'"><i class="ion-ios-game-controller-b"></i></div>
+                    <div class="icon" *ngIf="item.type=='Workshop'"><i class="ion-ios-photos"></i></div>
+                    <div class="icon" *ngIf="item.type=='Sports'"><i class="ion-ios-football"></i></div>
+                    <div class="icon" *ngIf="item.type=='Photography'"><i class="ion-ios-camera"></i></div>
+            </div>
+            <h2 class="title"><a href="#">{{item.Name}}</a></h2>
+            <p class="maxheightdes overflow-auto">{{item.description}}   
+              <br/>
+             <b class="row"><span> Posted By : {{item.username}}    </span><img  [src]="item.photo" class="w-30 avatar" style="margin-left:4px" ></b>      
+            </p>
+            <b class="pull-right" style="margin-right: 10px;">TYPE:{{item.type}}</b>
+            <br/>
+
+            <div [(ngModel)]="guest" *ngIf="auth.user$ | async; then authenticated else guest">
+              <!-- template will replace this div -->
+            </div>
+         
+            <ng-template #authenticated>
+              <div *ngIf="auth.user$ | async as user">
+                <div (click)="callup(item,user.uid)" class="fa fa-thumbs-o-up" style="margin-left: 8px;margin-right: 5px; color:blue; font-size: 28px;">
+                </div>  {{item.upvote.upvote}}
+                <div (click)="calldown(item,user.uid)" class="fa fa-thumbs-o-down" style="margin-left: 8px;margin-right: 5px; color:red; font-size: 28px;">
+                </div> {{item.upvote.downvote}}
+                <br/>
+
+                <div *ngIf="auth.canDelete(user)">
+                  <button class="btn btn-danger btn-circle pull-right" *ngIf="auth.canDelete(user)" (click)="deletePost($event,item.Name)">
+                  Delete Post
+                  </button>
+                  <br/>
+                  <br/>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+        </div>
+    </div>
+</section>
