@@ -1,6 +1,8 @@
-Link : [eventvaultpccoe.web.app](https://eventvaultpccoe.web.app/) 
+Link : [eventvaultpccoe.web.app](https://eventvaultpccoe.web.app/){:target="_blank"}
 
-# PotholeApp
+It has been made for event suggestion purposes.
+
+# Event Vault
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
 
